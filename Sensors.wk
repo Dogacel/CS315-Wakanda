@@ -1,3 +1,12 @@
 import [iostream, sensors]
 
-//TODO: define sensors
+main {    
+    number temperature
+    await temperature = sensors.temperature.read()
+    
+    for !?temperature {
+        println("Still waiting")
+    }
+    
+    println("The temperature is: " + temperature)
+}

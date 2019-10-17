@@ -1,3 +1,11 @@
 import [iostream, connection]
 
-// TODO: define a connection
+main {
+    url myurl = url("https://www.mysite.com/something")
+    wait response = myurl.get()
+    println(response.header)
+    
+    if ?response {
+        url("https://www.mysite.com/upload_data").post([["key", "val"], ["ten", 10]])
+    }
+}

@@ -1,3 +1,11 @@
 import [iostream, time]
 
-// TODO: define time
+main {
+    time t1
+    t1 = time.now
+    
+    time.wait(1)
+    
+    time dt = t1 - time.now
+    println("You have waited " + dt + " seconds.") 
+}
