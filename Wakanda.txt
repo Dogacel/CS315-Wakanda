@@ -1,0 +1,41 @@
+<program> ::= <include_stmt><functions>|<func_list>
+//inlcude_stmt definition
+<include_stmt> ::= <include><include_list>
+<include_list> ::= <LB><include_list_items><RB>|<LB><RB>
+<include_list_items> ::= <include_list_item>|<include_list_item><comma><include_list_items>
+
+//function definition
+<functions> ::= <function>|<function><functions>
+<function> ::= <function_signature><function_body>
+<function_signature> ::= <structural_func_sign>|<custom_func_sign>
+<structural_func_sign> ::= <initial>|<main>|<end>
+<custom_func_sign> ::= <func_identifier><LP><parameter_list><RP><small_rigth_arrow><return_type>
+<parameter_list> ::= <parameter>|<parameter><comma><parameter_list>
+<parameter> ::= <type><identifier>
+<return_type> ::= <type>|<void>
+<function_body> ::= <stmts>|<stmts><return>|<stmts><final>
+<final> ::= <ok>|<fail><fail_reason>|<finally_stmt>
+<finally_stmt> ::= <finally><LCB><success><LCB><success_stmt><RCB><fail><LCB><fail_stmt><RCB><RCB>|
+                 <finally><LCB><fail><LCB><fail_stmt><RCB><RCB>
+
+
+//Terminals
+<LCB> ::= {
+<RCB> ::= }
+<LP> ::= ( 
+<RP> ::=  )
+<LB> ::= [
+<RB> ::= }
+<arithmetic_op> ::= +|- 
+<mult_op> ::= *|/
+<initial> ::= initial
+<main> ::= main
+<end> ::= end
+<finally> ::= finally
+<success> ::= success
+<fail> ::= fail
+<ok> ::= ok
+<comma> ::= ,
+
+
+
