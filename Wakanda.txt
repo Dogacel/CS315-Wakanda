@@ -18,6 +18,10 @@
 <finally_stmt> ::= <finally><LCB><success><LCB><success_stmt><RCB><fail><LCB><fail_stmt><RCB><RCB>|
                  <finally><LCB><fail><LCB><fail_stmt><RCB><RCB>
 
+//Data types
+<type> ::= <primitive_data_type>|<custom_data_type>
+<custom_data_type> ::= <at_sign><identifier><LB><definitions><RB>
+<primitive_data_type> ::= <conn>|<time>|<number>|<promise>
 
 //Terminals
 <LCB> ::= {
@@ -25,9 +29,12 @@
 <LP> ::= ( 
 <RP> ::=  )
 <LB> ::= [
-<RB> ::= }
+<RB> ::= ]
 <arithmetic_op> ::= +|- 
 <mult_op> ::= *|/
+<mod_op> ::= %
+<logic_operator> ::= '|'|&|^
+<assignment_operator> ::= = 
 <initial> ::= initial
 <main> ::= main
 <end> ::= end
@@ -36,6 +43,4 @@
 <fail> ::= fail
 <ok> ::= ok
 <comma> ::= ,
-
-
-
+<small_rigth_arrow> ::= ->
