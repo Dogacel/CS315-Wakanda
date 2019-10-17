@@ -55,7 +55,7 @@
 
 // Loop statement
 <loop_stmt> ::= <for><condition><block_stmts>|<for><iterable><block_stmts>
-<condition> ::= <LP><condition><RP>|<value>|<value><logic_operator><condition>
+<condition> ::= <LP><condition><RP>|<value>|<value><logic_operator><condition>|<exmark><condition>|<questionmark><condition>
 <iterable> ::= <identifier><assignment_operator><iterable_value>
 <iterable_value> ::= <identifier>|<LB><value><dot><dot><value><RB>
 
@@ -64,8 +64,12 @@
 <arithmethic> ::= <value><arithmetic_operator><value>
 <array> ::= <LB><RB>|<LB><array_items><RB>
 <array_items> ::= <value>|<value><comma><array_items>
-
+<string> ::= <quote><quote>|<quote><sentence><quote>
 <type> ::= <identifier>
+<const> ::= <char>|<string>|<integer>|<float>
+<char> ::= <single_quote><character><single_quote>
+<integer> ::= <minus><integer>|<digit><integer>
+<float>
 
 //Terminals
 <LCB> ::= {
@@ -74,8 +78,11 @@
 <RP> ::=  )
 <LB> ::= [
 <RB> ::= ]
+<minus> ::= -
 <arithmetic_operator> ::= +|-|*|/|% 
-<logic_operator> ::= or|and|!
+<logic_operator> ::= or|and
+<exmark> ::= !
+<qestionmark> ::= ?
 <assignment_operator> ::= = 
 <initial> ::= initial
 <main> ::= main
