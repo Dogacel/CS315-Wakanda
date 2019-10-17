@@ -25,7 +25,7 @@ main {
     [_, myage] = me // _ is like in go, don't care
 }
 
-type person {
+@person [
     string name
     number age
-}
+]
