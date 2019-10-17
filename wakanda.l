@@ -3,7 +3,7 @@ space [ \t]+
 newline [\n]
 
 digit [0-9]
-character [a-zA-Z]
+character [a-z]|[A-Z]
 
 comment \/\/.*
 
@@ -14,7 +14,7 @@ lb  \[
 rb  \]
 
 lp  \(
-rb  \)
+rp  \)
 
 multiplication \*
 division \/
@@ -62,6 +62,28 @@ function func
 integer [+-]?{digit}+
 float [+-]?{digit}*\.{digit}+
 string \"(\\|[^\\\"])*\"
+identifier {character}+
 
+%%
+
+{lcb} printf("LCB");
+{rcb} printf("RCB");
+{lb} printf("LB");
+{rb} printf("RB");
+{lp} printf("LP");
+{rp} printf("RP");
+
+{string} printf("STRING");
+{comment} printf("COMMENT");
+{function} printf("FUNC");
+
+{include} printf("INCLUDE"); 
+{initial} printf("INITIAL");
+{main} printf("MAIN");
+{end} printf("END");
+
+{integer} printf("INTEGER");
+{float} printf("FLOAT");
+{identifier} printf("ID");
 
 %%
