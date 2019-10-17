@@ -1,27 +1,71 @@
-<program> ::= <include_stmt><functions>|<func_list>
-//inlcude_stmt definition
-<include_stmt> ::= <include><include_list>
+// Program definition 
+<program> ::= <include_stmt><function_or_type_definitions>|<function_or_type_definitions>
+<function_or_type_definitions> ::= <function_or_type_definition>|<function_or_type_definition><function_or_type_definitions>
+<function_or_type_definition> ::= <function>|<type_definition>
+
+<comment> ::= <backslash><backslash><sentence>
+
+// Include definition
+<include_stmt> ::= <include_word><include_list>
 <include_list> ::= <LB><include_list_items><RB>|<LB><RB>
 <include_list_items> ::= <include_list_item>|<include_list_item><comma><include_list_items>
+<include_list_item> ::= <identifier>|<string><semicolon><identifier>
 
-//function definition
-<functions> ::= <function>|<function><functions>
+// Type definition
+<type_definition> ::= <at_sign><identifier><LB><declerations><RB>
+<declerations> ::= <declarations>|<declaration><newline><declerations>
+
+// Functions definition
 <function> ::= <function_signature><function_body>
-<function_signature> ::= <structural_func_sign>|<custom_func_sign>
-<structural_func_sign> ::= <initial>|<main>|<end>
-<custom_func_sign> ::= <func_identifier><LP><parameter_list><RP><small_rigth_arrow><return_type>
-<parameter_list> ::= <parameter>|<parameter><comma><parameter_list>
-<parameter> ::= <type><identifier>
-<return_type> ::= <type>|<void>
-<function_body> ::= <stmts>|<stmts><return>|<stmts><final>
-<final> ::= <ok>|<fail><fail_reason>|<finally_stmt>
-<finally_stmt> ::= <finally><LCB><success><LCB><success_stmt><RCB><fail><LCB><fail_stmt><RCB><RCB>|
-                 <finally><LCB><fail><LCB><fail_stmt><RCB><RCB>
+<function_signature> ::= <structural_function_sign>|<custom_function_sign>
+<structural_function_sign> ::= <initial>|<main>|<end>
+<custom_function_sign> ::= <function_identifier><LP><function_parameter_list><RP><small_rigth_arrow><function_return_type>
+<function_identifier> ::= <func><identifier>
+<function_return_type> ::= <type>|<void>
+
+// Parameters definition
+<function_parameter_list> ::= <function_parameter>|<function_parameter><comma><function_parameter_list>
+<function_parameter> ::= <type><identifier>
+
+// Function body definition
+<function_body> ::= <stmts>|<stmts><final>
+<final> ::= <ok>|<fail><string>|<finally_stmt>
+<finally_stmt> ::= <finally><LCB><success><block_stmts><fail><block_stmts><RCB>|<finally><LCB><fail><block_stmts><RCB>
+
+// Statements
+<block_stmts> ::= <LCB><RCB>|<LCB><stmts><RCB>
+<stmts> ::= <stmt>|<stmt><stmts>
+<stmt> ::= <function_call>|<assignment_stmt>|<decleration_stmt>|<return_stmt>|<if_stmt>|<loop_stmt>|<endline>
+
+// Function call
+<function_call> ::= <identifier><LP><function_call_parameters><RP>|<identifier><dot><function_call>
+<function_call_parameters> ::= <value>|<value><comma><function_call_parameters>
+
+// Decleration and assignment statement
+<decleration_stmt> ::= <type><identifier>|<type><assignment_stmt>
+<assignment_stmt> ::= <identifier><assignment_operator><value>
+
+// Return statement
+<return_stmt> ::= <ok>|<fail><string>|<return>|<return><value>
+
+// If statement
+<if_stmt> ::= <matched_if_stmt>|<unmatched_if_stmt>
+<matched_if_stmt> ::= <if><condition><block_stmts><else><block_stmts>
+<unmatched_if_stmt> ::= <if><condition><block_stmts>|<if><condition><block_stmts><else><unmatched_if_stmt>
+
+// Loop statement
+<loop_stmt> ::= <for><condition><block_stmts>|<for><iterable><block_stmts>
+<condition> ::= <LP><condition><RP>|<value>|<value><logic_operator><condition>
+<iterable> ::= <identifier><assignment_operator><iterable_value>
+<iterable_value> ::= <identifier>|<LB><value><dot><dot><value><RB>
 
 //Data types
-<type> ::= <primitive_data_type>|<custom_data_type>
-<custom_data_type> ::= <at_sign><identifier><LB><definitions><RB>
-<primitive_data_type> ::= <conn>|<time>|<number>|<promise>
+<value> ::= <LP><value><RP>|<const>|<identifier>|<function_call>|<arithmethic>|<array>
+<arithmethic> ::= <value><arithmetic_operator><value>
+<array> ::= <LB><RB>|<LB><array_items><RB>
+<array_items> ::= <value>|<value><comma><array_items>
+
+<type> ::= <identifier>
 
 //Terminals
 <LCB> ::= {
@@ -30,10 +74,8 @@
 <RP> ::=  )
 <LB> ::= [
 <RB> ::= ]
-<arithmetic_op> ::= +|- 
-<mult_op> ::= *|/
-<mod_op> ::= %
-<logic_operator> ::= '|'|&|^
+<arithmetic_operator> ::= +|-|*|/|% 
+<logic_operator> ::= or|and|!
 <assignment_operator> ::= = 
 <initial> ::= initial
 <main> ::= main
@@ -42,5 +84,7 @@
 <success> ::= success
 <fail> ::= fail
 <ok> ::= ok
+<dot> ::= .
 <comma> ::= ,
 <small_rigth_arrow> ::= ->
+<identifier> ::= [a-z][a-zA-Z0-9_]+
