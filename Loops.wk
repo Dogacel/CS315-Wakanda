@@ -1,0 +1,23 @@
+import [iostream]
+
+initial {
+    number userInput
+}
+
+main {
+    for !?userInput and userInput != 0 {
+        if ?userInput {
+            for i in [1..userInput] {
+                print(i," ")
+            }
+        }
+        println("1) Do something")
+        println("2) Do another thing")
+        println("0) Exit")
+        userInput = input("Enter your choice: ")    
+    }
+}
+
+end {
+    print("Bye!")
+}

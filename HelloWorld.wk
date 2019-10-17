@@ -1,0 +1,5 @@
+import [iostream]
+
+main {
+    print("Hello World!")
+}
