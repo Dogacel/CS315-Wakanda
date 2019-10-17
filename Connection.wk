@@ -1,4 +1,4 @@
-import [iostream, connection]
+include [iostream, connection]
 
 main {
     url myurl = url("https://www.mysite.com/something")

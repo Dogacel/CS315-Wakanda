@@ -1,4 +1,4 @@
-import [iostream, sensors]
+include [iostream, sensors]
 
 main {    
     number temperature

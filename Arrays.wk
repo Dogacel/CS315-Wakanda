@@ -1,5 +1,4 @@
-import [iostream]
-
+include [iostream]
 
 // Example single line comment
 

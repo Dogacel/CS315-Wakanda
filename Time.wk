@@ -1,4 +1,4 @@
-import [iostream, time]
+include [iostream, time]
 
 main {
     time t1

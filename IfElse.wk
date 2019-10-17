@@ -1,4 +1,4 @@
-import [iostream]
+include [iostream]
 
 initial { 
     string name
@@ -18,3 +18,4 @@ main {
 end {
     print("Bye", name, "!")
 }
+h
