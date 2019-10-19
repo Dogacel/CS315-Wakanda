@@ -18,4 +18,3 @@ main {
 end {
     print("Bye", name, "!")
 }
-h

@@ -14,7 +14,8 @@ main {
         println("1) Do something")
         println("2) Do another thing")
         println("0) Exit")
-        userInput = input("Enter your choice: ")    
+        userInput = input("Enter your choice: ") 
+        LOG userInput   
     }
 }
 

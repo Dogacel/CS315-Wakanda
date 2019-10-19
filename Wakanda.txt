@@ -35,11 +35,15 @@
 // Statements
 <block_stmts> ::= <LCB><RCB>|<LCB><stmts><RCB>
 <stmts> ::= <stmt>|<stmt><stmts>
-<stmt> ::= <function_call>|<assignment_stmt>|<decleration_stmt>|<return_stmt>|<if_stmt>|<loop_stmt>|<endline>
+<stmt> ::= <function_call>|<keyword_stmt>|<assignment_stmt>|<decleration_stmt>|<return_stmt>|<if_stmt>|<loop_stmt>|<endline>
 
 // Function call
 <function_call> ::= <identifier><LP><function_call_parameters><RP>|<identifier><dot><function_call>
 <function_call_parameters> ::= <value>|<value><comma><function_call_parameters>
+
+// Keyword statement
+<keyword_stmt> ::= <log_stmt>
+<log_stmt> ::= <log><value> 
 
 // Decleration and assignment statement
 <decleration_stmt> ::= <type><identifier>|<type><assignment_stmt>
@@ -91,6 +95,7 @@
 <success> ::= success
 <fail> ::= fail
 <ok> ::= ok
+<log> ::= log
 <dot> ::= .
 <comma> ::= ,
 <small_rigth_arrow> ::= ->

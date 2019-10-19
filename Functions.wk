@@ -28,14 +28,12 @@ main {
     print("If fails, this does not execute")
     finally {
         success {
-            print("No errors have found!")
+            LOG "No errors have found!"
         }
         fail {
-            print(FAIL.reason)
+            LOG FAIL.reason
             // You can alternatiely FAIL again
         }
     }  
-   /* Alternatively 
-    * finally fail { ... }
-    * could be written */
+    // finally fail { ... }
 } 

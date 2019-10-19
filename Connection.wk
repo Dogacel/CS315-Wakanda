@@ -1,7 +1,7 @@
 include [iostream, connection]
 
 main {
-    url myurl = url("https://www.mysite.com/something")
+    url myurl = connect("https://www.mysite.com/something")
     wait response = myurl.get()
     println(response.header)
     
