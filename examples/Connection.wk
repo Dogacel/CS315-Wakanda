@@ -1,6 +1,8 @@
 include [iostream:*, connection]
 
 main {
+    connection.wifiConnect("SSID", "PWD")
+
     url myurl = connection.connect("https://www.mysite.com/something")
     wait response = myurl.get()
     println(response.header)

@@ -8,7 +8,7 @@ initial {
 main {
     name = input("Please enter your name:")
     age = input("Please enter your age:")
-    if age and age > 0 {
+    if ?age and age > 0 {
         print("Welcome ", name, "!")
     } else {
         print("Please enter a valid age next time!")
