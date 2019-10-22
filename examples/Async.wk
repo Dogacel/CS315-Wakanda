@@ -1,0 +1,21 @@
+include [iostream:*, time, connection, sensors]
+
+initial {
+    
+}
+
+main {
+    time startTime = time.now
+    sensor temp = sensors.temperature
+    number currentTemperature
+    await currentTemperature = temp.getValue()
+
+    for !?currentTemperature {}
+    
+    println("Current temperature is: " + currentTemperature);
+
+    wait number currentHumidity = sensors.humidity.getValue();
+
+    time deltaTime = startTime - time.now;
+    println(deltaTime + " seconds elapsed")
+}

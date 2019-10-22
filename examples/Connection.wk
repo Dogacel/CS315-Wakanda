@@ -1,0 +1,11 @@
+include [iostream:*, connection]
+
+main {
+    url myurl = connection.connect("https://www.mysite.com/something")
+    wait response = myurl.get()
+    println(response.header)
+    
+    if ?response {
+        url("https://www.mysite.com/upload_data").post([["key", "val"], ["ten", 10]])
+    }
+}

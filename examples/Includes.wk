@@ -1,0 +1,11 @@
+include [connection:c, iostream:p, sensors:s]
+
+main{
+    url myURL = c.connect("https://www.mysite.com/something")
+    wait response = myURL.get()
+    LOG response
+  
+    number currentTemperature =  s.thermometer.getKelvins()
+    LOG temperature
+    p.print("Current temperature in Kelvins is :", currentTemperature)
+}
