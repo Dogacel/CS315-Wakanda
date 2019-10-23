@@ -6,7 +6,6 @@ digit [0-9]
 character [a-z]|[A-Z]
 
 comment \/\/.*
-multicomment \/\*((\n|[^\*\/])*)\*\/
 
 lcb \{
 rcb \}
@@ -36,20 +35,17 @@ and and
 not !
 optional \?
 
-bwor \|
-bwand \&
-bwxor \^
-bwnot \~
 
 dot \.
 range \.\.
 comma \,
-
+colon :
 atsign \@
 
 if if 
 else else
 for for
+in in
 
 include include
 initial initial
@@ -59,8 +55,8 @@ end end
 finally finally
 success success
 failed failed
-ok OK
-fail FAIL
+ok (OK|ok)
+fail (FAIL|fail)
 log LOG
 
 unused _
@@ -70,15 +66,16 @@ return return
 function func
 await await
 
-integer {digit}+
+integer [+-]?{digit}+
 float [+-]?{digit}*\.{digit}+
+number {integer}|{float}
+bool (true|TRUE|false|FALSE)
 string \"(\\|[^\\\"])*\"
 char \'{character}\'
 identifier {character}({character}|{digit})*
-primitivetype (number|char|string|bool|time)[ ]
+primitivetype (number|char|string|bool|time|sensor)[ ]
 
 %%
-{multicomment} printf("<MULTICOMMENT>");
 {comment} printf("<COMMENT>");
 
 {lcb} printf("<LCB>");
@@ -91,13 +88,9 @@ primitivetype (number|char|string|bool|time)[ ]
 {range} printf("<RANGE>");
 {dot} printf("<DOT>");
 {comma} printf("<COMMA>");
+{colon} printf("<COLON>");
 
 {atsign} printf("<ATSIGN>");
-
-{bwor} printf("<BITWISEOR>");
-{bwand} printf("<BITWISEAND>");
-{bwxor} printf("<BITWISEXOR>");
-{bwnot} printf("<BITWISENOT>");
 
 {multiplication} printf("<MULT>");
 {division} printf("<DIV>"); 
@@ -126,11 +119,13 @@ primitivetype (number|char|string|bool|time)[ ]
 {string} printf("<STRING>");
 {char} printf("<CHAR>");
 {function} printf("<FUNC>");
+{number} printf("<NUMBER>");
 {await} printf("<AWAIT>");
 
 {if} printf("<IF>");
 {else} printf("<ELSE>");
 {for} printf("<FOR>");
+{in} printf("<IN>");
 
 {include} printf("<INCLUDE>"); 
 {initial} printf("<INITIAL>");
@@ -145,9 +140,6 @@ primitivetype (number|char|string|bool|time)[ ]
 {log}  printf("<LOG>");
 
 {return} printf("<RETURN>");
-
-{integer} printf("<INTEGER>");
-{float} printf("<FLOAT>");
 
 {newline} printf("<NL>\n");
 {identifier} printf("<ID>");
