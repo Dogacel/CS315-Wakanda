@@ -1,4 +1,8 @@
-%option main
+%{
+#include <stdio.h>
+#include "y.tab.h"
+void yyerror(char *);
+%}
 space [ \t]+
 newline [\n]
 
@@ -44,7 +48,7 @@ else else
 for for
 in in
 
-main main
+mains main
 
 
 returns ->
@@ -77,74 +81,82 @@ char \'{character}\'
 identifier {character}({character}|{digit})*
 primitivetype (number|char|string|bool|time)[ ]
 
+%option yylineno
 %%
-{comment} printf("COMMENT");
+{comment} return COMMENT;
 
-{lcb} printf("LCB");
-{rcb} printf("RCB");
-{lb} printf("LB");
-{rb} printf("RB");
-{lp} printf("LP");
-{rp} printf("RP");
+{lcb} return LCB;
+{rcb} return RCB;
+{lb} return LB;
+{rb} return RB;
+{lp} return LP;
+{rp} return RP;
 
-{range} printf("RANGE");
-{dot} printf("DOT");
-{comma} printf("COMMA");
+{range} return RANGE;
+{dot} return DOT;
+{comma} return COMMA;
 
-{multiplication} printf("MULT");
-{division} printf("DIV"); 
-{substraction} printf("MINUS");
-{addition} printf("PLUS");
-{modulus} printf("MOD");
+{multiplication} return MULT;
+{division} return DIV; 
+{substraction} return MINUS;
+{addition} return PLUS;
+{modulus} return MOD;
 
-{assignment} printf("ASSIGN");
-{equals} printf("EQUALS");
-{gte} printf("GTE");
-{lte} printf("LTE");
-{gt} printf("GT");
-{lt} printf("LT");
-{notequls} printf("NOTEQUALS");
+{assignment} return ASSIGN;
+{equals} return EQUALS;
+{gte} return GTE;
+{lte} return LTE;
+{gt} return GT;
+{lt} return LT;
+{notequls} return NOTEQUALS;
 
-{or} printf("OR");
-{and} printf("AND"); 
-{not} printf("NOT");
-{optional} printf("OPTIONAL");
+{or} return OR;
+{and} return AND; 
+{not} return NOT;
+{optional} return OPTIONAL;
 
-{returns} printf("RETURNS");
+{returns} return RETURNS;
 
-{primitivetype} printf("PRIMITIVE");
-{string} printf("STRING");
-{char} printf("CHAR");
-{function} printf("FUNC");
-{number} printf("NUMBER");
+{primitivetype} return PRIMITIVE;
+{string} return STRING;
+{char} return CHAR;
+{function} return FUNC;
+{number} return NUMBER;
 
-{if} printf("IF");
-{else} printf("ELSE");
-{for} printf("FOR");
-{in} printf("IN");
+{if} return IF;
+{else} return ELSE;
+{for} return FOR;
+{in} return IN;
 
-{main} printf("MAIN");
+{mains} return MAIN;
 
-{url_prim} printf("URL");
-{print} printf("PRINT");
-{input} printf("INPUT");
-{wait} printf("WAIT");
-{timenow} printf("TIMENOW");
-{readtemp} printf("READ_TEMP");
-{readhum} printf("READ_HUM");
-{readpress} printf("READ_PRESS");
-{readair} printf("READ_AIR");
-{readlight} printf("READ_LIGHT");
-{readsound} printf("READ_SOUND");
-{wificonnect} printf("WIFICONNECT");
-{connect} printf("CONNECT");
-{send} printf("SEND");
-{receive} printf("RECEIVE");
-{switch} printf("SWITCH");
+{url_prim} return URL;
+{print} return PRINT;
+{input} return INPUT;
+{wait} return WAIT;
+{timenow} return TIMENOW;
+{readtemp} return READ_TEMP;
+{readhum} return READ_HUM;
+{readpress} return READ_PRESS;
+{readair} return READ_AIR;
+{readlight} return READ_LIGHT;
+{readsound} return READ_SOUND;
+{wificonnect} return WIFICONNECT;
+{connect} return CONNECT;
+{send} return SEND;
+{receive} return RECEIVE;
+{switch} return SWITCH;
 
-{return} printf("RETURN");
+{return} return RETURN;
 
-{newline} printf("NL\n");
-{identifier} printf("ID");
+{identifier} return ID;
+
+%{
+  /*  {newline} return NL; // TODO: Remove this */ 
+%}
 
 %%
+
+int yywrap(void){
+	return 1;
+}
