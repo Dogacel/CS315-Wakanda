@@ -1,0 +1,13 @@
+main {
+    WIFICONNECT "SSID" "Password"
+
+    url myurl = URL "https://www.mysite.com/powercalculator"
+    
+    CONNECT myURL
+    
+    SEND myURL 5
+    
+    number result
+    
+    RECEIVE myURL result
+}

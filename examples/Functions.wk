@@ -1,4 +1,3 @@
-include [iostream:*]
 
 func fibonacci(number n) -> number {
     if n > 1 {
@@ -8,32 +7,18 @@ func fibonacci(number n) -> number {
     }
 }
 
-// Void functions are not the best practise, instead use of promises are encouraged
-!func badVoidFunction() -> 0 {
-    print("I do not return anything")
+func voidFunction() -> 0 {
+    PRINT "I do not return anything"
 }
 
-// Use promise based void functions to indicate you have successfully executed the function
-func goodVoidFunction() -> Promise {
-    if (input("Enter a positive number") < 0) {
-        FAIL "For some reason" // Instantly returns a fail 
-    }
-    OK // Instantly returns that it has successfully executed;
-}
 
 main {
-    number in = input("Enter an integer")
-    print(fibonacci(in))
-    goodVoidFunction() // If the functions fails, 
-    print("If fails, this does not execute")
-    finally {
-        success {
-            LOG "No errors have found!"
-        }
-        fail {
-            LOG FAIL.reason
-            // You can alternatiely FAIL again
-        }
-    }  
-    // finally fail { ... }
+    voidFunction()
+    
+    number in
+    
+    PRINT "Please enter a number:"
+    INPUT in
+    
+    PRINT fibonacci(in)
 } 

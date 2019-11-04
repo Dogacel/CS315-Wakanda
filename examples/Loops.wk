@@ -1,24 +1,27 @@
-include [iostream:*]
-
-initial {
-    number userInput
-}
-
 main {
     for !?userInput and userInput != 0 {
         if ?userInput {
             for i in [1..userInput] {
-                print(i," ")
+                PRINT i
+                PRINT " "
             }
         }
-        println("1) Do something")
-        println("2) Do another thing")
-        println("0) Exit")
-        userInput = input("Enter your choice: ") 
-        LOG userInput   
+        PRINT "1) Do something"
+        PRINT "2) Do another thing"
+        PRINT "0) Exit"
+        INPUT userInput
+        PRINT userInput   
     }
-}
-
-end {
-    print("Bye!")
+    
+    number cnt = 10
+    // EXAMPLE WHILE LOOP 
+    for cnt > 0 {
+    	PRINT cnt
+    	cnt = cnt - 1
+    }
+    
+    // EXAMPLE FOR LOOP
+    for i in [1..10] {
+    	PRINT i
+    }
 }

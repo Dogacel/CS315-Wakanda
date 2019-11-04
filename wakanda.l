@@ -65,6 +65,7 @@ returns ->
 return return
 function func
 await await
+switch switch
 
 integer [+-]?{digit}+
 float [+-]?{digit}*\.{digit}+

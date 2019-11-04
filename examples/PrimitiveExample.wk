@@ -1,0 +1,32 @@
+main {
+    url myWebsite = URL "www.somewebsite.com/uploadTemperature"
+    
+    time startTime
+    TIMENOW startTime
+    
+    number temp1
+    READ TEMPERATURE temp1
+    
+    WAIT 60
+    
+    number temp2
+    READ TEMPERATURE temp2
+    
+    number deltaTemp = temp2 - temp1
+    
+    SEND myWebsite deltaTemp
+    
+    PRINT "Temperature has changed"
+    PRINT deltaTemp
+    PRINT " degrees."
+
+    number currentHumidity
+    READ HUMIDITY currentHumidity
+
+    time deltaTime
+    TIMENOW deltaTime
+    deltaTime = deltaTime - startTime
+    
+    PRINT deltaTime
+    PRINT " seconds elapsed"
+}

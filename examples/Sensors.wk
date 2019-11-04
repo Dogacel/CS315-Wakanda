@@ -1,12 +1,30 @@
-include [iostream:*, sensors]
-
 main {    
     number temperature
-    await temperature = sensors.temperature.read()
+    READ TEMPERATURE temperature
     
-    for !?temperature {
-        println("Still waiting")
-    }
+    PRINT "Temperature is "
+    PRINT temperature
     
-    println("The temperature is: " + temperature)
+    number hum
+    READ HUMIDITY hum
+    PRINT hum
+    
+    number pressure
+    READ PRESSURE pressure
+    PRINT pressure
+    
+    number airQuality
+    READ AIRQUALITY airQuality
+    PRINT airQuality
+    
+    number lux
+    READ LIGHT lux
+    PRINT lux
+    
+    number sound
+    number freq = 1/60
+    READ SOUND freq sound
+    
+    bool first = SWITCH 0
+    bool last = SWITCH 9
 }

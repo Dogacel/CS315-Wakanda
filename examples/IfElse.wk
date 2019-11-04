@@ -1,20 +1,21 @@
-include [iostream:*]
-
-initial { 
-    string name
-    number age
-}
-
 main {
-    name = input("Please enter your name:")
-    age = input("Please enter your age:")
+    string name
+    int age
+    
+    PRINT "What is your name?"
+    INPUT name
+    
+    PRINT "What is your age?"
+    INPUT age
+    
     if ?age and age > 0 {
-        print("Welcome ", name, "!")
+        PRINT "Welcome "
+        PRINT name
     } else {
-        print("Please enter a valid age next time!")
+        PRINT "You are not a real person!"
     }
-}
-
-end {
-    print("Bye", name, "!")
+    
+    if age < 0 {
+    	PRINT "Unmatched age!"
+    }
 }

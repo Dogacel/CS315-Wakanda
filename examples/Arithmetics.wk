@@ -1,11 +1,8 @@
-include []
-
 main {
-    number temp = 7*9+4/2-(4+4)*8/2%40
+    number tmp = 7*9+4/2-(4+4)*8/2%40
     number flt = .054234 + 2033.3
-    number bits = 0b10101010110
-    number hexs = 0x22434FAab
-    
+    number cnst = 843
+
     char ch1 = 'a'
     char ch2 = 'b'
     
@@ -15,16 +12,13 @@ main {
     bool b1 = true or TRUE
     bool b2 = false or false and true or FALSE
 
-    person me = ["Dogac", 20] 
-    string myname
-    number myage
-    [myname, myage] = me 
+    time t1
+    TIMENOW t1
+    for i in [1..100000] {}
     
-    [myname, myage] = ["Ata", 19, 20, 21] // Shold get 19 as age
-    [_, myage] = me // _ is like in go, don't care
+    time t2
+    TIMENOW t2
+    
+    time dt = t2 - dt
 }
 
-@person [
-    string name
-    number age
-]

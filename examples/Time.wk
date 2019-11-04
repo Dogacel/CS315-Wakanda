@@ -1,11 +1,13 @@
-include [iostream:*, time]
-
 main {
     time t1
-    t1 = time.now
+    TIMENOW t1
     
-    time.wait(1)
+    WAIT 1
     
-    time dt = t1 - time.now
-    println("You have waited " + dt + " seconds.") 
+    time t2
+    TIMENOW t2
+    
+    PRINT "You have waited "
+    PRINT t2 - t1
+    PRINT " seconds."
 }
