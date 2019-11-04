@@ -56,13 +56,13 @@ print PRINT
 input INPUT
 wait WAIT
 timenow TIMENOW
-read_temp READ TEMPERATURE
-read_hum READ HUMIDITY
-read_press READ PRESSURE
-read_air READ AIRQUALITY
-read_light READ LIGHT
-read_sound READ SOUND
-wifi_connect WIFICONNECT
+readtemp (READ[ ]TEMPERATURE)
+readhum (READ[ ]HUMIDITY)
+readpress (READ[ ]PRESSURE)
+readair (READ[ ]AIRQUALITY)
+readlight (READ[ ]LIGHT)
+readsound (READ[ ]SOUND)
+wificonnect WIFICONNECT
 connect CONNECT
 send SEND
 receive RECEIVE
@@ -130,14 +130,14 @@ primitivetype (number|char|string|bool|time)[ ]
 {input} printf("INPUT");
 {wait} printf("WAIT");
 {timenow} printf("TIMENOW");
-{read_temp} printf("READ_TEMP");
-{read_hum} printf("READ_HUM");
-{read_press} printf("READ_PRESS");
-{read_air} printf("READ_AIR");
-{read_light} printf("READ_LIGHT");
-{read_sound} printf("READ_SOUND");
-{wifi_connect} printf("WIFICONNECT")
-{connect} printf("CONNECT")
+{readtemp} printf("READ_TEMP");
+{readhum} printf("READ_HUM");
+{readpress} printf("READ_PRESS");
+{readair} printf("READ_AIR");
+{readlight} printf("READ_LIGHT");
+{readsound} printf("READ_SOUND");
+{wificonnect} printf("WIFICONNECT");
+{connect} printf("CONNECT");
 {send} printf("SEND");
 {receive} printf("RECEIVE");
 {switch} printf("SWITCH");
