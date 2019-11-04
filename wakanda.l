@@ -35,36 +35,22 @@ and and
 not !
 optional \?
 
-
 dot \.
 range \.\.
 comma \,
-colon :
-atsign \@
 
 if if 
 else else
 for for
 in in
 
-include include
-initial initial
 main main
-end end
-
-finally finally
-success success
-failed failed
-ok (OK|ok)
-fail (FAIL|fail)
-log LOG
 
 unused _
 
 returns ->
 return return
 function func
-await await
 
 integer [+-]?{digit}+
 float [+-]?{digit}*\.{digit}+
@@ -76,72 +62,59 @@ identifier {character}({character}|{digit})*
 primitivetype (number|char|string|bool|time|sensor)[ ]
 
 %%
-{comment} printf("<COMMENT>");
+{comment} printf("COMMENT");
 
-{lcb} printf("<LCB>");
-{rcb} printf("<RCB>");
-{lb} printf("<LB>");
-{rb} printf("<RB>");
-{lp} printf("<LP>");
-{rp} printf("<RP>");
+{lcb} printf("LCB");
+{rcb} printf("RCB");
+{lb} printf("LB");
+{rb} printf("RB");
+{lp} printf("LP");
+{rp} printf("RP");
 
-{range} printf("<RANGE>");
-{dot} printf("<DOT>");
-{comma} printf("<COMMA>");
-{colon} printf("<COLON>");
+{range} printf("RANGE");
+{dot} printf("DOT");
+{comma} printf("COMMA");
+{colon} printf("COLON");
 
-{atsign} printf("<ATSIGN>");
+{multiplication} printf("MULT");
+{division} printf("DIV"); 
+{substraction} printf("MINUS");
+{addition} printf("PLUS");
+{modulus} printf("MOD");
 
-{multiplication} printf("<MULT>");
-{division} printf("<DIV>"); 
-{substraction} printf("<MINUS>");
-{addition} printf("<PLUS>");
-{modulus} printf("<MOD>");
+{assignment} printf("ASSIGN");
+{equals} printf("EQUALS");
+{gte} printf("GTE");
+{lte} printf("LTE");
+{gt} printf("GT");
+{lt} printf("LT");
+{notequls} printf("NOTEQUALS");
 
-{assignment} printf("<ASSIGN>");
-{equals} printf("<EQUALS>");
-{gte} printf("<GTE>");
-{lte} printf("<LTE>");
-{gt} printf("<GT>");
-{lt} printf("<LT>");
-{notequls} printf("<NOTEQUALS>");
+{unused} printf("UNDERSCORE");
 
-{unused} printf("<UNDERSCORE>");
+{or} printf("OR");
+{and} printf("AND"); 
+{not} printf("NOT");
+{optional} printf("OPTIONAL");
 
-{or} printf("<OR>");
-{and} printf("<AND>"); 
-{not} printf("<NOT>");
-{optional} printf("<OPTIONAL>");
+{returns} printf("RETURNS");
 
-{returns} printf("<RETURNS>");
+{primitivetype} printf("PRIMITIVE");
+{string} printf("STRING");
+{char} printf("CHAR");
+{function} printf("FUNC");
+{number} printf("NUMBER");
 
-{primitivetype} printf("<PRIMITIVE>");
-{string} printf("<STRING>");
-{char} printf("<CHAR>");
-{function} printf("<FUNC>");
-{number} printf("<NUMBER>");
-{await} printf("<AWAIT>");
+{if} printf("IF");
+{else} printf("ELSE");
+{for} printf("FOR");
+{in} printf("IN");
 
-{if} printf("<IF>");
-{else} printf("<ELSE>");
-{for} printf("<FOR>");
-{in} printf("<IN>");
+{main} printf("MAIN");
 
-{include} printf("<INCLUDE>"); 
-{initial} printf("<INITIAL>");
-{main} printf("<MAIN>");
-{end} printf("<END>");
+{return} printf("RETURN");
 
-{finally} printf("<FINALLY>");
-{success} printf("<SUCCESS>");
-{failed}  printf("<FAILED>");
-{ok} printf("<OK>");
-{fail} printf("<FAIL>");
-{log}  printf("<LOG>");
-
-{return} printf("<RETURN>");
-
-{newline} printf("<NL>\n");
-{identifier} printf("<ID>");
+{newline} printf("NL\n");
+{identifier} printf("ID");
 
 %%
