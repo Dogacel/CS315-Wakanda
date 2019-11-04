@@ -35,37 +35,38 @@ and and
 not !
 optional \?
 
-
 dot \.
 range \.\.
 comma \,
-colon :
-atsign \@
 
 if if 
 else else
 for for
 in in
 
-include include
-initial initial
 main main
-end end
 
-finally finally
-success success
-failed failed
-ok (OK|ok)
-fail (FAIL|fail)
-log LOG
-
-unused _
 
 returns ->
 return return
 function func
-await await
-switch switch
+
+url_prim URL
+print PRINT
+input INPUT
+wait WAIT
+timenow TIMENOW
+read_temp READ TEMPERATURE
+read_hum READ HUMIDITY
+read_press READ PRESSURE
+read_air READ AIRQUALITY
+read_light READ LIGHT
+read_sound READ SOUND
+wifi_connect WIFICONNECT
+connect CONNECT
+send SEND
+receive RECEIVE
+switch SWITCH
 
 integer [+-]?{digit}+
 float [+-]?{digit}*\.{digit}+
@@ -74,75 +75,76 @@ bool (true|TRUE|false|FALSE)
 string \"(\\|[^\\\"])*\"
 char \'{character}\'
 identifier {character}({character}|{digit})*
-primitivetype (number|char|string|bool|time|sensor)[ ]
+primitivetype (number|char|string|bool|time)[ ]
 
 %%
-{comment} printf("<COMMENT>");
+{comment} printf("COMMENT");
 
-{lcb} printf("<LCB>");
-{rcb} printf("<RCB>");
-{lb} printf("<LB>");
-{rb} printf("<RB>");
-{lp} printf("<LP>");
-{rp} printf("<RP>");
+{lcb} printf("LCB");
+{rcb} printf("RCB");
+{lb} printf("LB");
+{rb} printf("RB");
+{lp} printf("LP");
+{rp} printf("RP");
 
-{range} printf("<RANGE>");
-{dot} printf("<DOT>");
-{comma} printf("<COMMA>");
-{colon} printf("<COLON>");
+{range} printf("RANGE");
+{dot} printf("DOT");
+{comma} printf("COMMA");
 
-{atsign} printf("<ATSIGN>");
+{multiplication} printf("MULT");
+{division} printf("DIV"); 
+{substraction} printf("MINUS");
+{addition} printf("PLUS");
+{modulus} printf("MOD");
 
-{multiplication} printf("<MULT>");
-{division} printf("<DIV>"); 
-{substraction} printf("<MINUS>");
-{addition} printf("<PLUS>");
-{modulus} printf("<MOD>");
+{assignment} printf("ASSIGN");
+{equals} printf("EQUALS");
+{gte} printf("GTE");
+{lte} printf("LTE");
+{gt} printf("GT");
+{lt} printf("LT");
+{notequls} printf("NOTEQUALS");
 
-{assignment} printf("<ASSIGN>");
-{equals} printf("<EQUALS>");
-{gte} printf("<GTE>");
-{lte} printf("<LTE>");
-{gt} printf("<GT>");
-{lt} printf("<LT>");
-{notequls} printf("<NOTEQUALS>");
+{or} printf("OR");
+{and} printf("AND"); 
+{not} printf("NOT");
+{optional} printf("OPTIONAL");
 
-{unused} printf("<UNDERSCORE>");
+{returns} printf("RETURNS");
 
-{or} printf("<OR>");
-{and} printf("<AND>"); 
-{not} printf("<NOT>");
-{optional} printf("<OPTIONAL>");
+{primitivetype} printf("PRIMITIVE");
+{string} printf("STRING");
+{char} printf("CHAR");
+{function} printf("FUNC");
+{number} printf("NUMBER");
 
-{returns} printf("<RETURNS>");
+{if} printf("IF");
+{else} printf("ELSE");
+{for} printf("FOR");
+{in} printf("IN");
 
-{primitivetype} printf("<PRIMITIVE>");
-{string} printf("<STRING>");
-{char} printf("<CHAR>");
-{function} printf("<FUNC>");
-{number} printf("<NUMBER>");
-{await} printf("<AWAIT>");
+{main} printf("MAIN");
 
-{if} printf("<IF>");
-{else} printf("<ELSE>");
-{for} printf("<FOR>");
-{in} printf("<IN>");
+{url_prim} printf("URL");
+{print} printf("PRINT");
+{input} printf("INPUT");
+{wait} printf("WAIT");
+{timenow} printf("TIMENOW");
+{read_temp} printf("READ_TEMP");
+{read_hum} printf("READ_HUM");
+{read_press} printf("READ_PRESS");
+{read_air} printf("READ_AIR");
+{read_light} printf("READ_LIGHT");
+{read_sound} printf("READ_SOUND");
+{wifi_connect} printf("WIFICONNECT")
+{connect} printf("CONNECT")
+{send} printf("SEND");
+{receive} printf("RECEIVE");
+{switch} printf("SWITCH");
 
-{include} printf("<INCLUDE>"); 
-{initial} printf("<INITIAL>");
-{main} printf("<MAIN>");
-{end} printf("<END>");
+{return} printf("RETURN");
 
-{finally} printf("<FINALLY>");
-{success} printf("<SUCCESS>");
-{failed}  printf("<FAILED>");
-{ok} printf("<OK>");
-{fail} printf("<FAIL>");
-{log}  printf("<LOG>");
-
-{return} printf("<RETURN>");
-
-{newline} printf("<NL>\n");
-{identifier} printf("<ID>");
+{newline} printf("NL\n");
+{identifier} printf("ID");
 
 %%
