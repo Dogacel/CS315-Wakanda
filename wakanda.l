@@ -159,6 +159,7 @@ primitivetype (number|char|string|bool|time|url)[ ]
 {identifier} return ID;
 
 {newline} ;
+{space} ;
 
 %%
 

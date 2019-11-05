@@ -248,7 +248,7 @@ primary:
     const
     |ID
     |function_call
-    |LP nonlogical_expression RP
+    |LP expression RP
     |SWITCH NUMBER
     |URL STRING
 
