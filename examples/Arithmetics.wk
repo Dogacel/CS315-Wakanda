@@ -1,6 +1,6 @@
 main {
-    number tmp = 7*9+4/2-(4+4)*8/2%40
-    number flt = .054234 + 2033.3
+    number tmp = 7*9+(3.2)/132*2-2
+    number flt = 0.54234 + 2033.3
     number cnst = 843
 
     char ch1 = 'a'
@@ -8,7 +8,7 @@ main {
     
     string str1 = ch1 + (ch2 + ch1)
     string str1 = "tester" + ch1
-    
+
     bool b1 = true or TRUE
     bool b2 = false or false and true or FALSE
 
@@ -21,4 +21,3 @@ main {
     
     time dt = t2 - dt
 }
-

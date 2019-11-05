@@ -1,6 +1,5 @@
 main {
     url myWebsite = URL "www.somewebsite.com/uploadTemperature"
-    
     time startTime
     TIMENOW startTime
     

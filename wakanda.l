@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "y.tab.h"
 void yyerror(char *);
+int maincount = 0;
 %}
 space [ \t]+
 newline [\n]
@@ -51,7 +52,9 @@ in in
 mains main
 
 
+
 returns ->
+void 0
 return return
 function func
 
@@ -72,18 +75,18 @@ send SEND
 receive RECEIVE
 switch SWITCH
 
-integer [+-]?{digit}+
+integer {digit}+
 float [+-]?{digit}*\.{digit}+
 number {integer}|{float}
 bool (true|TRUE|false|FALSE)
 string \"(\\|[^\\\"])*\"
 char \'{character}\'
 identifier {character}({character}|{digit})*
-primitivetype (number|char|string|bool|time)[ ]
+primitivetype (number|char|string|bool|time|url)[ ]
 
 %option yylineno
 %%
-{comment} return COMMENT;
+{comment} ;
 
 {lcb} return LCB;
 {rcb} return RCB;
@@ -93,7 +96,6 @@ primitivetype (number|char|string|bool|time)[ ]
 {rp} return RP;
 
 {range} return RANGE;
-{dot} return DOT;
 {comma} return COMMA;
 
 {multiplication} return MULT;
@@ -115,7 +117,10 @@ primitivetype (number|char|string|bool|time)[ ]
 {not} return NOT;
 {optional} return OPTIONAL;
 
+{bool} return BOOL;
+
 {returns} return RETURNS;
+{void} return VOID;
 
 {primitivetype} return PRIMITIVE;
 {string} return STRING;
@@ -128,7 +133,9 @@ primitivetype (number|char|string|bool|time)[ ]
 {for} return FOR;
 {in} return IN;
 
-{mains} return MAIN;
+{mains} {maincount++; return MAIN;}
+
+{dot} return ENDSTMT;
 
 {url_prim} return URL;
 {print} return PRINT;
@@ -151,9 +158,7 @@ primitivetype (number|char|string|bool|time)[ ]
 
 {identifier} return ID;
 
-%{
-  /*  {newline} return NL; // TODO: Remove this */ 
-%}
+{newline} ;
 
 %%
 

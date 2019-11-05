@@ -1,6 +1,6 @@
 main {
     string name
-    int age
+    number age
     
     PRINT "What is your name?"
     INPUT name

@@ -25,6 +25,6 @@ main {
     number freq = 1/60
     READ SOUND freq sound
     
-    bool first = SWITCH 0
-    bool last = SWITCH 9
+    bool first = SWITCH 1
+    bool last = SWITCH 10
 }
