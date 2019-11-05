@@ -329,7 +329,7 @@ number:
     NUMBER
     |MINUS NUMBER
     ;
-    
+
 number_or_id:
     number
     |ID
@@ -341,10 +341,10 @@ type:
 
 %%
 
-void yyerror(char *s) {	;
-
-	fprintf(stdout, "line %d: %s\n", yylineno,s);
+void yyerror(char *s) {
+	fprintf(stdout, "%s on line %d.\n", s, yylineno);
 }
+
 int main(void){
     yyparse();
     if(yynerrs < 1) {
@@ -355,6 +355,6 @@ int main(void){
         } else {
             printf("Parsing is successful\n");
         }
-    }
+    } 
  return 0;
 }
