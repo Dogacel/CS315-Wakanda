@@ -77,6 +77,70 @@ expressions:
 expression:
     PRINT STRING
 
+print_stmt:
+    PRINT CONST 
+     |PRINT SPACE expression
+input_stmt:
+    INPUT ID
+timenow_stmt:
+    TIMENOW ID
+read_temp_stmt: 
+    READ_TEMP ID
+read_hum_stmt:
+    READ_HUM ID
+read_press_stmt:
+    READ_PRESS ID
+read_air_stmt:
+    READ_AIR ID
+read_light_stmt:
+    READ_LIGHT ID
+read_sound_stmt:
+    READ_SOUND ID
+receive_stmt:
+    RECEIVE ID
+send_stmt:
+    SEND ID
+connect_stmt:
+    CONNECT ID
+wifi_connect_stmt:
+    WIFICONNECT STRING STRING
+
+decleration_stmt:
+    type ID
+    |type assignment_stmt
+assignment_stmt:
+    ID EQUALS expression
+
+return_stmt:
+    RETURN
+    |RETURN expression
+
+if_stmt: 
+    matched_if_stmt
+    |unmatched_if_stmt
+matched_if_stmt:
+    IF condition block_stmts ELSE block_stmts
+unmatched_if_stmt:
+    IF condition block_stmts
+    |IF condition block_stmts ELSE unmatched_if_stmt
+
+loop_stmt:
+    while_loop
+    |for_loop
+while_loop:
+    FOR condition block_stmts
+for_loop:
+    FOR iterable block_stmts
+condition:
+    expression
+    |expression logic_operator condition
+    |EXMARK condition
+    |QUESTIONMARK condition
+iterable:
+    ID IN iterable_expression
+iterable_expression:
+    LB NUMBER DOT DOT NUMBER RB
+
 %%
 
 void yyerror(char *s) {
