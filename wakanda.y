@@ -68,7 +68,10 @@ int maincount;
 
 %left OR
 %left AND
+%left EQUALS NOTEQUALS
 %left LT LTE GT GTE
+%left PLUS MINUS
+%left MULT DIV MOD
 %left OPTIONAL NOT
 
 %%
@@ -271,52 +274,42 @@ iterable_expression:
 
 //---EXPRESSION--//
 expression:
-    nonlogical_expression
-    |nonlogical_expression logic_operator expression
-    |NOT expression
-    |OPTIONAL expression
-	;
-
-//---NON LOGICAL EXPRESSIONS//
-nonlogical_expression:
-    plus_or_minus_expression
-    ;
-
-plus_or_minus_expression:
-    mult_or_div_or_mod_expression
-    |plus_or_minus_expression PLUS mult_or_div_or_mod_expression
-    |plus_or_minus_expression MINUS mult_or_div_or_mod_expression
-    ;
-
-mult_or_div_or_mod_expression:
     primary
-    |mult_or_div_or_mod_expression MULT primary
-    |mult_or_div_or_mod_expression DIV primary
-    |mult_or_div_or_mod_expression MOD primary 
-    ;
+    |logical_expression
+    |arithmetic_expression
+	;
 
 primary:
     const
     |ID
     |function_call
-    |LP expression RP
     |SWITCH number
     |URL STRING
+    |LP expression RP
 	;
 
-//---OPERATORS AND CONSTANTS---//
-logic_operator:
-    OR
-    |AND
-    |NOT
-    |NOTEQUALS
-    |GT
-    |LT
-    |GTE
-    |LTE
-    |EQUALS
+logical_expression:
+    expression OR expression
+    |expression AND expression
+    |expression NOTEQUALS expression
+    |expression GT expression
+    |expression LT expression
+    |expression GTE expression
+    |expression LTE expression
+    |expression EQUALS expression
+    |NOT expression
+    |OPTIONAL expression
 	;
 
+arithmetic_expression:
+    expression PLUS expression
+    |expression MINUS expression
+    |expression MULT expression
+    |expression DIV expression
+    |expression MOD expression
+    ;
+
+//---PRIMARY TYPES---//
 const:
     CHAR
     |STRING
